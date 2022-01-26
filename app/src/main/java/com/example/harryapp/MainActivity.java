@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,28 +14,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Handler handler=new Handler();
 
-        //set the title
-        getSupportActionBar().setTitle("Harry's App");
 
-        //open login activity
-        Button buttonLogin=findViewById(R.id.button_login);
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
+            public void run() {
                 Intent intent=new Intent(MainActivity.this,Login.class);
                 startActivity(intent);
+                finish();
             }
-        });
-
-        //open registration activity
-        Button buttonRegister=findViewById(R.id.button_register);
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+        },5000);
     }
 }

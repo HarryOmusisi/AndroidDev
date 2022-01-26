@@ -42,31 +42,14 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().setTitle("Login");
 
         editTextLoginEmail= findViewById(R.id.editText_login_email);
-        editTextLoginPwd= findViewById(R.id.editText_login_password);
+        editTextLoginPwd= findViewById(R.id.editText_login_pwd);
 
         progressBar=findViewById(R.id.progressBar);
         authProfile=FirebaseAuth.getInstance();
 
-        //show hide password eye con
-        ImageView imageViewShowHidePwd=findViewById(R.id.imageView_showHide_pwd);
-        imageViewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
-        imageViewShowHidePwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(editTextLoginPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())){
-                    //if password is visible then hide it
-                    editTextLoginPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    //Change icon
-                    imageViewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
-                }else{
-                    editTextLoginPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    imageViewShowHidePwd.setImageResource(R.drawable.ic_show_pwd);
-                }
-            }
-        });
 
         //Login User
-        Button buttonLogin= findViewById(R.id.button_login);
+        Button buttonLogin= findViewById(R.id.btn_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +72,15 @@ public class Login extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     loginUser(textEmail,textPwd);
                 }
+            }
+        });
+        //Register user
+        Button btn_register=findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Login.this,RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

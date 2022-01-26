@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidstudy.daraja.Daraja;
+import com.androidstudy.daraja.DarajaListener;
+import com.androidstudy.daraja.model.AccessToken;
+import com.androidstudy.daraja.model.LNMExpress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +62,7 @@ public class UserProfile extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
+
     }
         //User coming to UserProfile after successful registration
     private void checkIfEmailVerified(FirebaseUser firebaseUser) {
@@ -147,9 +153,9 @@ public class UserProfile extends AppCompatActivity {
 //        }else if(id==R.id.menu_update_profile){
 //            Intent intent=new Intent(UserProfile.this,UpdateProfile.class);
 //            startActivity(intent);
-//        }else if(id==R.id.menu_update_email){
-//            Intent intent=new Intent(UserProfile.this,UpdateEmail.class);
-//            startActivity(intent);
+        }else if(id==R.id.menu_payments){
+            Intent intent=new Intent(UserProfile.this,payments.class);
+            startActivity(intent);
 //        }else if(id==R.id.menu_settings){
 //            Toast.makeText(UserProfile.this, "Menu Settings", Toast.LENGTH_SHORT).show();
 //        }else if(id==R.id.menu_change_password){
@@ -167,7 +173,7 @@ public class UserProfile extends AppCompatActivity {
             //Clear stack to prevent user from coming back to the activity
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish();       //close UserProfile activit
+            finish();       //close UserProfile activity
         }else{
             Toast.makeText(UserProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
         }

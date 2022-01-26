@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Refresh"
-        android:icon="@drawable/ic_refresh_white"
+        android:icon="@drawable/refresher"
         android:alphabeticShortcut="r"
         android:id="@+id/menu_refresh"
         android:orderInCategory="1"
@@ -12,8 +12,8 @@
     <item android:title="Update Profile"
         android:id="@+id/menu_update_profile"/>
 
-    <item android:title="Update Email"
-        android:id="@+id/menu_update_email"/>
+    <item android:title="Payments"
+        android:id="@+id/menu_payments"/>
 
     <item android:title="Settings"
         android:id="@+id/menu_settings"/>
